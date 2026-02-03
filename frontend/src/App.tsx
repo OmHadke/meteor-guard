@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
-import maplibregl from 'maplibre-gl';
+import maplibregl, {type MapMouseEvent} from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {DeckGL} from '@deck.gl/react';
 import {GeoJsonLayer} from '@deck.gl/layers';
@@ -75,7 +75,7 @@ export default function App() {
       zoom: viewState.zoom,
     });
     mapRef.current = map;
-    map.on('click', (e) => {
+    map.on('click', (e: MapMouseEvent) => {
       setCenter([e.lngLat.lng, e.lngLat.lat]);
     });
     map.on('move', () => {
